@@ -163,3 +163,25 @@ mysql> select * from addressbook;
 +-----------+----------+---------+----------+---------------+---------+--------------+--------------------+
 2 rows in set (0.09 sec)
 
+Uc6-Ability to Retrieve Person belonging to a City or State from the Address Book
+
+mysql> select * from addressbook;
++-----------+----------+---------+----------+---------------+---------+--------------+--------------------+
+| firstname | lastname | address | city     | state         | zip     | mobilenumber | email              |
++-----------+----------+---------+----------+---------------+---------+--------------+--------------------+
+| sravanthi | kaluvayi | 2/115   | chittoor | andhrapradesh | 515626  | 9908229348   | kalavai4@gmail.com |
+| bhavya    | maligi   | 3/343   | kadapa   | ts            |  515765 | 8975686645   | bhavi@gmail.com    |
++-----------+----------+---------+----------+---------------+---------+--------------+--------------------+
+2 rows in set (0.09 sec)
+
+mysql> select from addressbook where city = 'kadapa' or state = 'ts';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from addressbook where city = 'kadapa' or state = 'ts'' at line 1
+mysql> select * from addressbook where city = 'kadapa' or state = 'ts';
++-----------+----------+---------+--------+-------+---------+--------------+-----------------+
+| firstname | lastname | address | city   | state | zip     | mobilenumber | email           |
++-----------+----------+---------+--------+-------+---------+--------------+-----------------+
+| bhavya    | maligi   | 3/343   | kadapa | ts    |  515765 | 8975686645   | bhavi@gmail.com |
++-----------+----------+---------+--------+-------+---------+--------------+-----------------+
+1 row in set (0.00 sec)
+
+mysql>
