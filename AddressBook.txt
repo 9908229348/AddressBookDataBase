@@ -75,3 +75,24 @@ mysql> describe addressbook;
 8 rows in set (0.00 sec)
 
 mysql>
+
+Uc3- Ability to insert new Contacts to AddressBook
+
+mysql> insert into addressbook ( firstname, lastname, address, city, state, zip, mobilenumber,email) values
+    -> ( 'sravanthi', 'kallavai', '2/115', 'kurnool', 'andhrapradesh','515626', '9908229348', 'kalavai4@gmail.com'),
+    -> ( 'bhavya', 'maligi', '3/343', 'kadapa', 'ts', ' 515765', '8975686645', 'bhavi@gmail.com'),
+    -> ( 'hema', 'chitti', '4/987', 'anantapur', 'kerala', '515262', '7869875643', 'hema@gmail.com');
+Query OK, 3 rows affected (0.14 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from addressbook;
++-----------+----------+---------+-----------+---------------+---------+--------------+--------------------+
+| firstname | lastname | address | city      | state         | zip     | mobilenumber | email              |
++-----------+----------+---------+-----------+---------------+---------+--------------+--------------------+
+| sravanthi | kallavai | 2/115   | kurnool   | andhrapradesh | 515626  | 9908229348   | kalavai4@gmail.com |
+| bhavya    | maligi   | 3/343   | kadapa    | ts            |  515765 | 8975686645   | bhavi@gmail.com    |
+| hema      | chitti   | 4/987   | anantapur | kerala        | 515262  | 7869875643   | hema@gmail.com     |
++-----------+----------+---------+-----------+---------------+---------+--------------+--------------------+
+3 rows in set (0.04 sec)
+
+mysql>
