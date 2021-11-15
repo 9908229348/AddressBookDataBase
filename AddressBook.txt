@@ -1,4 +1,5 @@
 Uc1-Ability to create a Address Book Service DB
+
 mysql> show databases;
 +--------------------+
 | Database           |
@@ -30,5 +31,47 @@ mysql> show databases;
 | world               |
 +---------------------+
 8 rows in set (0.08 sec)
+
+mysql>
+
+Uc2-Ability to create a AddressBook Table with first and last names, address, city,state,zip, phone numberand email as its attributes
+
+mysql> use addressbook_service;
+Database changed
+mysql> select database();
++---------------------+
+| database()          |
++---------------------+
+| addressbook_service |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> create table addressbook
+    -> (
+    -> firstname varchar(150) NOT NULL,
+    -> lastname varchar(150) NOT NULL,
+    -> address varchar(150) NOT NULL,
+    -> city varchar(150) NOT NULL,
+    -> state varchar(150) NOT NULL,
+    -> zip varchar(150) NOT NULL,
+    -> mobilenumber varchar(150) NOT NULL,
+    -> email varchar(150) NOT NULL
+    -> );
+Query OK, 0 rows affected (1.67 sec)
+
+mysql> describe addressbook;
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| firstname    | varchar(150) | NO   |     | NULL    |       |
+| lastname     | varchar(150) | NO   |     | NULL    |       |
+| address      | varchar(150) | NO   |     | NULL    |       |
+| city         | varchar(150) | NO   |     | NULL    |       |
+| state        | varchar(150) | NO   |     | NULL    |       |
+| zip          | varchar(150) | NO   |     | NULL    |       |
+| mobilenumber | varchar(150) | NO   |     | NULL    |       |
+| email        | varchar(150) | NO   |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
 
 mysql>
