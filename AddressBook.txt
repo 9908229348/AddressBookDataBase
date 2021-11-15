@@ -96,3 +96,45 @@ mysql> select * from addressbook;
 3 rows in set (0.04 sec)
 
 mysql>
+
+Uc4- Edit Contact Details of Person using name
+
+mysql> select * from addressbook;
++-----------+----------+---------+-----------+---------------+---------+--------------+--------------------+
+| firstname | lastname | address | city      | state         | zip     | mobilenumber | email              |
++-----------+----------+---------+-----------+---------------+---------+--------------+--------------------+
+| sravanthi | kallavai | 2/115   | kurnool   | andhrapradesh | 515626  | 9908229348   | kalavai4@gmail.com |
+| bhavya    | maligi   | 3/343   | kadapa    | ts            |  515765 | 8975686645   | bhavi@gmail.com    |
+| hema      | chitti   | 4/987   | anantapur | kerala        | 515262  | 7869875643   | hema@gmail.com     |
++-----------+----------+---------+-----------+---------------+---------+--------------+--------------------+
+3 rows in set (0.04 sec)
+
+mysql> update addressbook set city = 'chittoor' where firstname = 'sravanthi';
+Query OK, 1 row affected (0.13 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from addressbook;
++-----------+----------+---------+-----------+---------------+---------+--------------+--------------------+
+| firstname | lastname | address | city      | state         | zip     | mobilenumber | email              |
++-----------+----------+---------+-----------+---------------+---------+--------------+--------------------+
+| sravanthi | kallavai | 2/115   | chittoor  | andhrapradesh | 515626  | 9908229348   | kalavai4@gmail.com |
+| bhavya    | maligi   | 3/343   | kadapa    | ts            |  515765 | 8975686645   | bhavi@gmail.com    |
+| hema      | chitti   | 4/987   | anantapur | kerala        | 515262  | 7869875643   | hema@gmail.com     |
++-----------+----------+---------+-----------+---------------+---------+--------------+--------------------+
+3 rows in set (0.04 sec)
+
+mysql> update addressbook set lastname = 'kaluvayi' where firstname = 'sravanthi';
+Query OK, 1 row affected (0.10 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from addressbook;
++-----------+----------+---------+-----------+---------------+---------+--------------+--------------------+
+| firstname | lastname | address | city      | state         | zip     | mobilenumber | email              |
++-----------+----------+---------+-----------+---------------+---------+--------------+--------------------+
+| sravanthi | kaluvayi | 2/115   | chittoor  | andhrapradesh | 515626  | 9908229348   | kalavai4@gmail.com |
+| bhavya    | maligi   | 3/343   | kadapa    | ts            |  515765 | 8975686645   | bhavi@gmail.com    |
+| hema      | chitti   | 4/987   | anantapur | kerala        | 515262  | 7869875643   | hema@gmail.com     |
++-----------+----------+---------+-----------+---------------+---------+--------------+--------------------+
+3 rows in set (0.00 sec)
+
+mysql>
