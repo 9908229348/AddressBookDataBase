@@ -240,3 +240,122 @@ mysql> select * from addressbook where city = 'kadapa' order by firstname;
 | teja      | busu     | 11/23   | kadapa | ap    | 123456  | 7689847382   | teja@gmail.com  |
 +-----------+----------+---------+--------+-------+---------+--------------+-----------------+
 2 rows in set (0.00 sec)
+
+Uc9-Ability to identify each Address Book with name and Type.
+
+mysql> select * from addressbook;
++-----------+----------+---------+----------+---------------+---------+--------------+--------------------+
+| firstname | lastname | address | city     | state         | zip     | mobilenumber | email              |
++-----------+----------+---------+----------+---------------+---------+--------------+--------------------+
+| sravanthi | kaluvayi | 2/115   | chittoor | andhrapradesh | 515626  | 9908229348   | kalavai4@gmail.com |
+| bhavya    | maligi   | 3/343   | kadapa   | ts            |  515765 | 8975686645   | bhavi@gmail.com    |
+| teja      | busu     | 11/23   | kadapa   | ap            | 123456  | 7689847382   | teja@gmail.com     |
+| buddu     | abc      | 32/42   | hyd      | ap            | 435765  | 8764532343   | buddu@gmail.com    |
++-----------+----------+---------+----------+---------------+---------+--------------+--------------------+
+4 rows in set (0.00 sec)
+
+mysql> alter table addressbook add type varchar(150) not null after lastname;
+Query OK, 0 rows affected (1.38 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from addressbook;
++-----------+----------+------+---------+----------+---------------+---------+--------------+--------------------+
+| firstname | lastname | type | address | city     | state         | zip     | mobilenumber | email              |
++-----------+----------+------+---------+----------+---------------+---------+--------------+--------------------+
+| sravanthi | kaluvayi |      | 2/115   | chittoor | andhrapradesh | 515626  | 9908229348   | kalavai4@gmail.com |
+| bhavya    | maligi   |      | 3/343   | kadapa   | ts            |  515765 | 8975686645   | bhavi@gmail.com    |
+| teja      | busu     |      | 11/23   | kadapa   | ap            | 123456  | 7689847382   | teja@gmail.com     |
+| buddu     | abc      |      | 32/42   | hyd      | ap            | 435765  | 8764532343   | buddu@gmail.com    |
++-----------+----------+------+---------+----------+---------------+---------+--------------+--------------------+
+4 rows in set (0.04 sec)
+
+mysql> update addressbook set type = 'family' where firstname = 'sravanthi' or firstname = 'buddu';
+Query OK, 2 rows affected (0.13 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select * from addressbook;
++-----------+----------+--------+---------+----------+---------------+---------+--------------+--------------------+
+| firstname | lastname | type   | address | city     | state         | zip     | mobilenumber | email              |
++-----------+----------+--------+---------+----------+---------------+---------+--------------+--------------------+
+| sravanthi | kaluvayi | family | 2/115   | chittoor | andhrapradesh | 515626  | 9908229348   | kalavai4@gmail.com |
+| bhavya    | maligi   |        | 3/343   | kadapa   | ts            |  515765 | 8975686645   | bhavi@gmail.com    |
+| teja      | busu     |        | 11/23   | kadapa   | ap            | 123456  | 7689847382   | teja@gmail.com     |
+| buddu     | abc      | family | 32/42   | hyd      | ap            | 435765  | 8764532343   | buddu@gmail.com    |
++-----------+----------+--------+---------+----------+---------------+---------+--------------+--------------------+
+4 rows in set (0.00 sec)
+
+mysql> update addressbook set type = 'friends' where firstname = 'bhavya';
+Query OK, 1 row affected (0.14 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from addressbook;
++-----------+----------+---------+---------+----------+---------------+---------+--------------+--------------------+
+| firstname | lastname | type    | address | city     | state         | zip     | mobilenumber | email              |
++-----------+----------+---------+---------+----------+---------------+---------+--------------+--------------------+
+| sravanthi | kaluvayi | family  | 2/115   | chittoor | andhrapradesh | 515626  | 9908229348   | kalavai4@gmail.com |
+| bhavya    | maligi   | friends | 3/343   | kadapa   | ts            |  515765 | 8975686645   | bhavi@gmail.com    |
+| teja      | busu     |         | 11/23   | kadapa   | ap            | 123456  | 7689847382   | teja@gmail.com     |
+| buddu     | abc      | family  | 32/42   | hyd      | ap            | 435765  | 8764532343   | buddu@gmail.com    |
++-----------+----------+---------+---------+----------+---------------+---------+--------------+--------------------+
+4 rows in set (0.00 sec)
+
+mysql> update addressbook set type = 'profession' where firstname = 'teja';
+Query OK, 1 row affected (0.09 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from addressbook;
++-----------+----------+------------+---------+----------+---------------+---------+--------------+--------------------+
+| firstname | lastname | type       | address | city     | state         | zip     | mobilenumber | email              |
++-----------+----------+------------+---------+----------+---------------+---------+--------------+--------------------+
+| sravanthi | kaluvayi | family     | 2/115   | chittoor | andhrapradesh | 515626  | 9908229348   | kalavai4@gmail.com |
+| bhavya    | maligi   | friends    | 3/343   | kadapa   | ts            |  515765 | 8975686645   | bhavi@gmail.com    |
+| teja      | busu     | profession | 11/23   | kadapa   | ap            | 123456  | 7689847382   | teja@gmail.com     |
+| buddu     | abc      | family     | 32/42   | hyd      | ap            | 435765  | 8764532343   | buddu@gmail.com    |
++-----------+----------+------------+---------+----------+---------------+---------+--------------+--------------------+
+4 rows in set (0.05 sec)
+
+
+mysql> alter table addressbook add addressBookname varchar(150) not null after firstname;
+Query OK, 0 rows affected (1.99 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from addressbook;
++-----------+-----------------+----------+------------+---------+----------+---------------+---------+--------------+--------------------+
+| firstname | addressBookname | lastname | type       | address | city     | state         | zip     | mobilenumber | email              |
++-----------+-----------------+----------+------------+---------+----------+---------------+---------+--------------+--------------------+
+| sravanthi |                 | kaluvayi | family     | 2/115   | chittoor | andhrapradesh | 515626  | 9908229348   | kalavai4@gmail.com |
+| bhavya    |                 | maligi   | friends    | 3/343   | kadapa   | ts            |  515765 | 8975686645   | bhavi@gmail.com    |
+| teja      |                 | busu     | profession | 11/23   | kadapa   | ap            | 123456  | 7689847382   | teja@gmail.com     |
+| buddu     |                 | abc      | family     | 32/42   | hyd      | ap            | 435765  | 8764532343   | buddu@gmail.com    |
++-----------+-----------------+----------+------------+---------+----------+---------------+---------+--------------+--------------------+
+4 rows in set (0.00 sec)
+
+mysql> update addressbook set addressBookname = 'ad1' where firstname = 'teja' or firstname = 'bhavya';
+Query OK, 2 rows affected (0.05 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select * from addressbook;
++-----------+-----------------+----------+------------+---------+----------+---------------+---------+--------------+--------------------+
+| firstname | addressBookname | lastname | type       | address | city     | state         | zip     | mobilenumber | email              |
++-----------+-----------------+----------+------------+---------+----------+---------------+---------+--------------+--------------------+
+| sravanthi |                 | kaluvayi | family     | 2/115   | chittoor | andhrapradesh | 515626  | 9908229348   | kalavai4@gmail.com |
+| bhavya    | ad1             | maligi   | friends    | 3/343   | kadapa   | ts            |  515765 | 8975686645   | bhavi@gmail.com    |
+| teja      | ad1             | busu     | profession | 11/23   | kadapa   | ap            | 123456  | 7689847382   | teja@gmail.com     |
+| buddu     |                 | abc      | family     | 32/42   | hyd      | ap            | 435765  | 8764532343   | buddu@gmail.com    |
++-----------+-----------------+----------+------------+---------+----------+---------------+---------+--------------+--------------------+
+4 rows in set (0.06 sec)
+
+mysql> update addressbook set addressBookname = 'ad2' where firstname = 'buddu' or firstname = 'sravanthi';
+Query OK, 2 rows affected (0.13 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select * from addressbook;
++-----------+-----------------+----------+------------+---------+----------+---------------+---------+--------------+--------------------+
+| firstname | addressBookname | lastname | type       | address | city     | state         | zip     | mobilenumber | email              |
++-----------+-----------------+----------+------------+---------+----------+---------------+---------+--------------+--------------------+
+| sravanthi | ad2             | kaluvayi | family     | 2/115   | chittoor | andhrapradesh | 515626  | 9908229348   | kalavai4@gmail.com |
+| bhavya    | ad1             | maligi   | friends    | 3/343   | kadapa   | ts            |  515765 | 8975686645   | bhavi@gmail.com    |
+| teja      | ad1             | busu     | profession | 11/23   | kadapa   | ap            | 123456  | 7689847382   | teja@gmail.com     |
+| buddu     | ad2             | abc      | family     | 32/42   | hyd      | ap            | 435765  | 8764532343   | buddu@gmail.com    |
++-----------+-----------------+----------+------------+---------+----------+---------------+---------+--------------+--------------------+
+4 rows in set (0.00 sec)
