@@ -382,3 +382,38 @@ mysql> select type,count(type) from addressbook group by type;
 | profession |           1 |
 +------------+-------------+
 3 rows in set (0.00 sec)
+
+Uc11-Ability to add person to both Friend and Family
+
+mysql> insert into addressbook (firstname, addressBookname, lastname, type, address, city, state, zip, mobilenumber, email) values
+    -> ('chitti','ad1','def','friends','12-34','kurnool','ts','435678','8765432109','abc@gia.com');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> select * from addressbook;
++-----------+-----------------+----------+------------+---------+----------+---------------+---------+--------------+--------------------+
+| firstname | addressBookname | lastname | type       | address | city     | state         | zip     | mobilenumber | email              |
++-----------+-----------------+----------+------------+---------+----------+---------------+---------+--------------+--------------------+
+| sravanthi | ad2             | kaluvayi | family     | 2/115   | chittoor | andhrapradesh | 515626  | 9908229348   | kalavai4@gmail.com |
+| bhavya    | ad1             | maligi   | friends    | 3/343   | kadapa   | ts            |  515765 | 8975686645   | bhavi@gmail.com    |
+| teja      | ad1             | busu     | profession | 11/23   | kadapa   | ap            | 123456  | 7689847382   | teja@gmail.com     |
+| buddu     | ad2             | abc      | family     | 32/42   | hyd      | ap            | 435765  | 8764532343   | buddu@gmail.com    |
+| chitti    | ad1             | def      | friends    | 12-34   | kurnool  | ts            | 435678  | 8765432109   | abc@gia.com        |
++-----------+-----------------+----------+------------+---------+----------+---------------+---------+--------------+--------------------+
+5 rows in set (0.04 sec)
+
+mysql> insert into addressbook (firstname, addressBookname, lastname, type, address, city, state, zip, mobilenumber, email) values
+    -> ('chitti','ad1','def','family','12-34','kurnool','ts','435678','8765432109','abc@gia.com');
+Query OK, 1 row affected (0.13 sec)
+
+mysql> select * from addressbook;
++-----------+-----------------+----------+------------+---------+----------+---------------+---------+--------------+--------------------+
+| firstname | addressBookname | lastname | type       | address | city     | state         | zip     | mobilenumber | email              |
++-----------+-----------------+----------+------------+---------+----------+---------------+---------+--------------+--------------------+
+| sravanthi | ad2             | kaluvayi | family     | 2/115   | chittoor | andhrapradesh | 515626  | 9908229348   | kalavai4@gmail.com |
+| bhavya    | ad1             | maligi   | friends    | 3/343   | kadapa   | ts            |  515765 | 8975686645   | bhavi@gmail.com    |
+| teja      | ad1             | busu     | profession | 11/23   | kadapa   | ap            | 123456  | 7689847382   | teja@gmail.com     |
+| buddu     | ad2             | abc      | family     | 32/42   | hyd      | ap            | 435765  | 8764532343   | buddu@gmail.com    |
+| chitti    | ad1             | def      | friends    | 12-34   | kurnool  | ts            | 435678  | 8765432109   | abc@gia.com        |
+| chitti    | ad1             | def      | family     | 12-34   | kurnool  | ts            | 435678  | 8765432109   | abc@gia.com        |
++-----------+-----------------+----------+------------+---------+----------+---------------+---------+--------------+--------------------+
+6 rows in set (0.00 sec)
